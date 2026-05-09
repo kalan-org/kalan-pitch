@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Kalan — Neuroscience-powered education for every child</title>
+<meta name="description" content="Kalan deploys solar-powered, AI-adaptive learning kiosks in underserved communities across Africa, grounded in 10 years of cognitive science R&D.">
+<meta property="og:title" content="Kalan — Neuroscience-powered education for every child">
+<meta property="og:description" content="Solar-powered learning kiosks. Cognitive science engine. Zero internet required. West Africa & beyond.">
+<meta property="og:type" content="website">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-pale: #F5E6C0;
+    --deep: #0D1F1A;
+    --forest: #1A3A2E;
+    --mid: #2C5F4A;
+    --sage: #4A8C6F;
+    --sage-light: #6BAF8E;
+    --cream: #FAF7F0;
+    --white: #FFFFFF;
+    --text-dark: #0D1F1A;
+    --text-mid: #2C4A3E;
+    --text-light: #6A8A7E;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    line-height: 1.6;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    background: var(--deep);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .header-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.5px;
+  }
+
+  .header-badge {
+    font-size: 11px;
+    color: rgba(250,247,240,0.5);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ─── SECTIONS ─── */
+  section {
+    padding: 80px 24px;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--deep);
+    padding: 100px 24px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 100%, rgba(74,140,111,0.2) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 15% 15%, rgba(201,168,76,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+  }
+
+  .hero .container {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+
+  .hero-eyebrow {
+    display: inline-block;
+    border: 1px solid rgba(201,168,76,0.5);
+    color: var(--gold);
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 2px;
+    margin-bottom: 32px;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(56px, 10vw, 100px);
+    font-weight: 900;
+    letter-spacing: -2px;
+    line-height: 0.9;
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--sage-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 24px;
+  }
+
+  .hero-tagline {
+    font-size: clamp(16px, 2.5vw, 20px);
+    color: rgba(250,247,240,0.65);
+    font-weight: 300;
+    max-width: 500px;
+    margin: 0 auto 48px;
+    line-height: 1.6;
+  }
+
+  .hero-tagline strong {
+    color: var(--cream);
+    font-weight: 500;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: clamp(24px, 5vw, 80px);
+    flex-wrap: wrap;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding-top: 40px;
+    margin-top: 16px;
+  }
+
+  .hero-stat .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: var(--gold);
+    font-weight: 700;
+    display: block;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .hero-stat .lbl {
+    font-size: 11px;
+    color: rgba(250,247,240,0.45);
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+  }
+
+  /* ─── SECTION LABELS ─── */
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    color: var(--text-dark);
+  }
+
+  .section-intro {
+    font-size: 16px;
+    color: var(--text-light);
+    max-width: 600px;
+    line-height: 1.7;
+    margin-bottom: 48px;
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    width: 40px;
+    height: 3px;
+    background: var(--gold);
+    margin: 16px 0 32px;
+  }
+
+  /* ─── PROBLEM ─── */
+  .problem-section {
+    background: var(--forest);
+    color: var(--cream);
+  }
+
+  .problem-section h2 { color: var(--cream); }
+  .problem-section .section-label { color: var(--gold-pale); opacity: 0.7; }
+  .problem-section .section-intro { color: rgba(250,247,240,0.6); }
+
+  .big-stat {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(72px, 14vw, 120px);
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .big-stat-label {
+    font-size: 15px;
+    color: rgba(250,247,240,0.6);
+    margin-bottom: 48px;
+    max-width: 380px;
+    line-height: 1.6;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+  }
+
+  .stat-card {
+    border-left: 3px solid var(--gold);
+    padding-left: 20px;
+  }
+  .stat-card .val {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    color: var(--cream);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-card .desc {
+    font-size: 13px;
+    color: rgba(250,247,240,0.55);
+    line-height: 1.5;
+  }
+
+  /* ─── GAP ─── */
+  .gap-section {
+    background: var(--deep);
+    color: var(--cream);
+  }
+  .gap-section h2 { color: var(--cream); }
+  .gap-section .section-label { color: rgba(201,168,76,0.6); }
+
+  .fail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  .fail-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    padding: 24px;
+    position: relative;
+  }
+
+  .fail-card.highlight {
+    background: rgba(201,168,76,0.06);
+    border-color: rgba(201,168,76,0.25);
+  }
+
+  .fail-who {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .fail-what {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--cream);
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .fail-why {
+    font-size: 12px;
+    color: rgba(250,247,240,0.5);
+    line-height: 1.6;
+  }
+  .fail-x {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    color: rgba(200,60,60,0.35);
+    font-size: 16px;
+  }
+
+  /* ─── SOLUTION ─── */
+  .solution-section {
+    background: var(--cream);
+  }
+
+  .solution-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 60px;
+    align-items: start;
+  }
+
+  @media (max-width: 720px) {
+    .solution-layout { grid-template-columns: 1fr; }
+  }
+
+  .solution-points {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    margin-top: 32px;
+  }
+
+  .sol-point {
+    display: flex;
+    gap: 20px;
+  }
+
+  .sol-num {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: var(--gold);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .sol-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+  }
+  .sol-desc {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+
+  .kiosk-card {
+    background: var(--forest);
+    border-radius: 16px;
+    padding: 32px 24px;
+    border: 1px solid rgba(201,168,76,0.2);
+    color: var(--cream);
+    text-align: center;
+    position: sticky;
+    top: 80px;
+  }
+
+  .kiosk-icon-big { font-size: 48px; margin-bottom: 12px; }
+
+  .kiosk-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .kiosk-features {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .kiosk-feat {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    color: rgba(250,247,240,0.7);
+    line-height: 1.4;
+  }
+  .kiosk-feat::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ─── SCIENCE ─── */
+  .science-section {
+    background: var(--white);
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .science-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .sci-card {
+    background: var(--cream);
+    border-radius: 12px;
+    padding: 28px 22px;
+    border-bottom: 3px solid var(--gold);
+  }
+
+  .sci-icon { font-size: 30px; margin-bottom: 14px; }
+  .sci-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+  }
+  .sci-desc {
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .sci-ref {
+    font-size: 10px;
+    color: var(--text-light);
+    font-style: italic;
+    opacity: 0.7;
+  }
+
+  .partner-banner {
+    background: var(--forest);
+    color: var(--cream);
+    border-radius: 12px;
+    padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .partner-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .partner-text {
+    font-size: 13px;
+    color: rgba(250,247,240,0.7);
+    line-height: 1.6;
+    flex: 1;
+    min-width: 200px;
+  }
+
+  /* ─── JOURNEY ─── */
+  .journey-section {
+    background: var(--deep);
+    color: var(--cream);
+  }
+  .journey-section h2 { color: var(--cream); }
+  .journey-section .section-label { color: rgba(201,168,76,0.6); }
+
+  .journey-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 640px;
+  }
+
+  .journey-step {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    padding-bottom: 32px;
+    position: relative;
+  }
+
+  .journey-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 19px;
+    top: 40px;
+    bottom: 0;
+    width: 1px;
+    background: rgba(201,168,76,0.2);
+  }
+
+  .j-marker {
+    width: 40px;
+    height: 40px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .j-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 5px;
+  }
+  .j-desc {
+    font-size: 13px;
+    color: rgba(250,247,240,0.6);
+    line-height: 1.6;
+  }
+
+  .lang-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 40px;
+  }
+  .lang-tag {
+    border: 1px solid rgba(201,168,76,0.3);
+    color: rgba(250,247,240,0.6);
+    font-size: 11px;
+    padding: 5px 14px;
+    border-radius: 20px;
+  }
+
+  /* ─── DEPLOYMENT ─── */
+  .deployment-section {
+    background: var(--forest);
+    color: var(--cream);
+  }
+  .deployment-section h2 { color: var(--cream); }
+  .deployment-section .section-label { color: rgba(250,247,240,0.4); }
+
+  .phases {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+
+  .phase-card {
+    background: rgba(0,0,0,0.2);
+    border-radius: 12px;
+    padding: 28px;
+    border-top: 3px solid var(--gold);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .phase-bg-num {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    color: rgba(201,168,76,0.08);
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .phase-period {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .phase-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 14px;
+  }
+  .phase-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .phase-items li {
+    font-size: 12px;
+    color: rgba(250,247,240,0.6);
+    padding-left: 14px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .phase-items li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  /* ─── MODEL ─── */
+  .model-section {
+    background: var(--cream);
+  }
+
+  .revenue-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .rev-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 24px;
+    border-left: 4px solid var(--gold);
+    box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+  }
+
+  .rev-icon { font-size: 28px; margin-bottom: 12px; }
+  .rev-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+  }
+  .rev-desc {
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .rev-tag {
+    display: inline-block;
+    font-size: 10px;
+    background: rgba(74,140,111,0.1);
+    color: var(--mid);
+    padding: 3px 10px;
+    border-radius: 10px;
+    font-weight: 500;
+  }
+
+  .structure-note {
+    background: var(--forest);
+    color: var(--cream);
+    border-radius: 12px;
+    padding: 28px 32px;
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .str-entity { flex: 1; min-width: 200px; }
+  .str-entity-name {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .str-entity-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 6px;
+  }
+  .str-entity-desc {
+    font-size: 12px;
+    color: rgba(250,247,240,0.6);
+    line-height: 1.6;
+  }
+  .str-divider {
+    width: 1px;
+    background: rgba(255,255,255,0.1);
+    align-self: stretch;
+  }
+
+  /* ─── ROADMAP ─── */
+  .roadmap-section {
+    background: var(--deep);
+    color: var(--cream);
+  }
+  .roadmap-section h2 { color: var(--cream); }
+  .roadmap-section .section-label { color: rgba(201,168,76,0.6); }
+
+  .pilot-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  @media (max-width: 600px) {
+    .pilot-stats { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .p-stat {
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.18);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+  }
+  .p-stat .pnum {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: var(--gold);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .p-stat .plabel {
+    font-size: 11px;
+    color: rgba(250,247,240,0.45);
+  }
+
+  .timeline {
+    max-width: 640px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .tl-item {
+    display: flex;
+    gap: 24px;
+    padding-bottom: 32px;
+    position: relative;
+  }
+
+  .tl-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 19px;
+    top: 40px;
+    bottom: 0;
+    width: 1px;
+    background: rgba(201,168,76,0.15);
+  }
+
+  .tl-dot-wrap {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tl-dot {
+    width: 12px;
+    height: 12px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+
+  .tl-month {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .tl-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 5px;
+  }
+  .tl-desc {
+    font-size: 13px;
+    color: rgba(250,247,240,0.5);
+    line-height: 1.6;
+  }
+
+  /* ─── TEAM ─── */
+  .team-section {
+    background: var(--forest);
+    color: var(--cream);
+  }
+  .team-section h2 { color: var(--cream); }
+  .team-section .section-label { color: rgba(250,247,240,0.4); }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+
+  .team-card {
+    background: rgba(0,0,0,0.2);
+    border-radius: 16px;
+    padding: 32px;
+    border: 1px solid rgba(201,168,76,0.15);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .team-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--sage));
+  }
+
+  .team-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--sage));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+
+  .team-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 4px;
+  }
+
+  .team-role {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+
+  .team-bio {
+    font-size: 13px;
+    color: rgba(250,247,240,0.65);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .team-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .team-tag {
+    font-size: 10px;
+    background: rgba(201,168,76,0.1);
+    color: var(--gold-pale);
+    padding: 3px 10px;
+    border-radius: 10px;
+  }
+
+  /* ─── ASK ─── */
+  .ask-section {
+    background: var(--deep);
+    color: var(--cream);
+  }
+  .ask-section h2 { color: var(--cream); }
+  .ask-section .section-label { color: rgba(201,168,76,0.6); }
+
+  .featured-ask {
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 12px;
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .ask-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 7vw, 56px);
+    color: var(--gold);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .ask-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+  .ask-desc {
+    font-size: 13px;
+    color: rgba(250,247,240,0.55);
+    line-height: 1.6;
+  }
+
+  .ask-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+  }
+
+  .ask-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    padding: 24px;
+  }
+
+  .ask-type {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  /* ─── VISION ─── */
+  .vision-section {
+    background: var(--deep);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    padding: 120px 24px;
+  }
+
+  .vision-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(26,58,46,0.6) 0%, transparent 70%);
+  }
+
+  .vision-section .container { position: relative; z-index: 2; }
+
+  .vision-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--cream);
+    max-width: 700px;
+    margin: 0 auto 48px;
+  }
+
+  .vision-quote em {
+    color: var(--gold);
+    font-style: normal;
+  }
+
+  .vision-stats {
+    display: flex;
+    justify-content: center;
+    gap: clamp(30px, 7vw, 80px);
+    flex-wrap: wrap;
+    margin-bottom: 56px;
+  }
+
+  .vis-stat .big {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    color: var(--gold);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .vis-stat .small {
+    font-size: 11px;
+    color: rgba(250,247,240,0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .vision-cta {
+    display: inline-block;
+    border: 1px solid rgba(201,168,76,0.5);
+    color: var(--gold);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 14px 40px;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .vision-cta:hover {
+    background: rgba(201,168,76,0.1);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--deep);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 32px 24px;
+    text-align: center;
+  }
+
+  footer .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  footer .logo { font-size: 18px; }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+    color: rgba(250,247,240,0.35);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+
+  .footer-copy {
+    font-size: 11px;
+    color: rgba(250,247,240,0.2);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 640px) {
+    section { padding: 60px 20px; }
+    .hero { padding: 70px 20px 60px; }
+    .partner-banner { flex-direction: column; }
+    .structure-note { flex-direction: column; }
+    .str-divider { display: none; }
+    .featured-ask { flex-direction: column; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo">Kalan</div>
+    <div class="header-badge">Pitch Memo · 2026</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="container">
+    <div class="hero-eyebrow">Charitable Incorporated Organisation · UK</div>
+    <h1>Kalan</h1>
+    <p class="hero-tagline">
+      <strong>Neuroscience-powered education</strong><br>
+      for every child, everywhere
+    </p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="num">244M</span>
+        <span class="lbl">Children out of school<br>globally</span>
+      </div>
+      <div class="hero-stat">
+        <span class="num">10 yrs</span>
+        <span class="lbl">Cognitive science R&D<br>behind Kalan</span>
+      </div>
+      <div class="hero-stat">
+        <span class="num">£0</span>
+        <span class="lbl">Required from<br>children or families</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem-section">
+  <div class="container">
+    <div class="section-label">The Problem</div>
+    <h2>A learning crisis hiding<br>in plain sight</h2>
+    <div class="divider"></div>
+    <div class="big-stat">244M</div>
+    <p class="big-stat-label">children and youth are still out of school globally — the majority in Sub-Saharan Africa and South Asia.</p>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="val">89%</div>
+        <div class="desc">of children in low-income countries cannot read a simple sentence by age 10 <em>(World Bank)</em></div>
+      </div>
+      <div class="stat-card">
+        <div class="val">−27%</div>
+        <div class="desc">International aid to education expected to drop between 2023–2027 <em>(UNESCO 2025)</em></div>
+      </div>
+      <div class="stat-card">
+        <div class="val">1:80</div>
+        <div class="desc">Average teacher-to-student ratio in rural West Africa — individual learning is structurally impossible</div>
+      </div>
+      <div class="stat-card">
+        <div class="val">43%</div>
+        <div class="desc">of Sub-Saharan Africa has no reliable electricity in rural areas — ruling out standard EdTech solutions</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GAP -->
+<section class="gap-section">
+  <div class="container">
+    <div class="section-label">The Gap</div>
+    <h2 style="color:var(--cream)">Why existing solutions fall short</h2>
+    <div class="divider"></div>
+    <div class="fail-grid">
+      <div class="fail-card">
+        <div class="fail-x">✗</div>
+        <div class="fail-who">Traditional Schools</div>
+        <div class="fail-what">Not enough teachers, not enough classrooms</div>
+        <div class="fail-why">Infrastructure-dependent. Cannot scale to rural or underserved zones without massive public investment.</div>
+      </div>
+      <div class="fail-card">
+        <div class="fail-x">✗</div>
+        <div class="fail-who">Online EdTech</div>
+        <div class="fail-what">Requires stable internet & electricity</div>
+        <div class="fail-why">Designed for connected middle-class users. Useless where connectivity is absent or unaffordable.</div>
+      </div>
+      <div class="fail-card">
+        <div class="fail-x">✗</div>
+        <div class="fail-who">Basic Connectivity Kiosks</div>
+        <div class="fail-what">Access without pedagogy</div>
+        <div class="fail-why">Provide hardware but lack a rigorous learning engine. Content is passive and non-adaptive. No cognitive science foundation.</div>
+      </div>
+      <div class="fail-card">
+        <div class="fail-x">✗</div>
+        <div class="fail-who">Standard NGO Programs</div>
+        <div class="fail-what">Dependent on donations, hard to scale</div>
+        <div class="fail-why">Volunteer-based models are fragile. No sustainable revenue structure means permanent fundraising pressure.</div>
+      </div>
+      <div class="fail-card highlight">
+        <div class="fail-who" style="color:var(--gold-light)">The Real Gap</div>
+        <div class="fail-what" style="color:var(--cream)">Science-driven, offline, autonomous learning at scale</div>
+        <div class="fail-why" style="color:rgba(250,247,240,0.75)">No solution combines cognitive science rigor, offline capability, solar autonomy, and a sustainable financial model. <strong style="color:var(--gold)">That's Kalan.</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="solution-section">
+  <div class="container">
+    <div class="section-label">Our Solution</div>
+    <h2>The Kalan Kiosk</h2>
+    <div class="divider"></div>
+    <p class="section-intro">A solar-powered standalone learning station — deployable in any school, community centre or village, with no internet, no teacher required, no ongoing electricity cost.</p>
+    <div class="solution-layout">
+      <div>
+        <div class="solution-points">
+          <div class="sol-point">
+            <div class="sol-num">1</div>
+            <div>
+              <div class="sol-title">Neuroscience engine</div>
+              <div class="sol-desc">Powered by 10 years of cognitive science R&D. Spacing effect, adaptive difficulty, immediate feedback — the way children's brains actually learn, not the way textbooks are written.</div>
+            </div>
+          </div>
+          <div class="sol-point">
+            <div class="sol-num">2</div>
+            <div>
+              <div class="sol-title">Fully offline & solar-autonomous</div>
+              <div class="sol-desc">Zero connectivity needed. Solar panels + lithium battery keep the kiosk running day and night. Designed for real African infrastructure conditions — dust, heat, intermittent power.</div>
+            </div>
+          </div>
+          <div class="sol-point">
+            <div class="sol-num">3</div>
+            <div>
+              <div class="sol-title">Locally rooted content</div>
+              <div class="sol-desc">Curriculum available in French, English, Dioula, Wolof and other local languages. Exercises anchored in local cultural context — not imported Western curricula bolted onto African classrooms.</div>
+            </div>
+          </div>
+          <div class="sol-point">
+            <div class="sol-num">4</div>
+            <div>
+              <div class="sol-title">Built for ages 6–14</div>
+              <div class="sol-desc">Audio-first interface for low-literacy learners. Visual-rich. Covers reading, maths, science and life skills. Progress tracked per child, synced periodically for program monitoring.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="kiosk-card">
+          <div class="kiosk-icon-big">🖥️</div>
+          <div class="kiosk-label">Kalan Kiosk</div>
+          <div class="kiosk-features">
+            <div class="kiosk-feat">Solar-powered + battery backup</div>
+            <div class="kiosk-feat">4–6 touch-screen tablets</div>
+            <div class="kiosk-feat">AI adaptive learning engine</div>
+            <div class="kiosk-feat">Multilingual content library</div>
+            <div class="kiosk-feat">Remote monitoring dashboard</div>
+            <div class="kiosk-feat">Ages 6–14, all core subjects</div>
+            <div class="kiosk-feat">Zero internet required</div>
+            <div class="kiosk-feat">Ruggedised for field conditions</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCIENCE -->
+<section class="science-section">
+  <div class="container">
+    <div class="section-label">The Science</div>
+    <h2>Built on 10 years of cognitive science R&D</h2>
+    <div class="divider"></div>
+    <p class="section-intro">Kalan's learning engine doesn't use generic AI content. Every interaction is governed by peer-reviewed principles of how humans — especially children — actually retain and apply knowledge.</p>
+    <div class="science-grid">
+      <div class="sci-card">
+        <div class="sci-icon">🔁</div>
+        <div class="sci-name">Spacing Effect</div>
+        <div class="sci-desc">Content revisited at optimal intervals moves knowledge into long-term memory. Children don't forget what they learn.</div>
+        <div class="sci-ref">Ebbinghaus (1885)</div>
+      </div>
+      <div class="sci-card">
+        <div class="sci-icon">🎯</div>
+        <div class="sci-name">Adaptive Difficulty</div>
+        <div class="sci-desc">Each child progresses at their own pace. The system adjusts in real time — always challenging, never overwhelming.</div>
+        <div class="sci-ref">Vygotsky ZPD (1978)</div>
+      </div>
+      <div class="sci-card">
+        <div class="sci-icon">⚡</div>
+        <div class="sci-name">Immediate Feedback</div>
+        <div class="sci-desc">Corrections and encouragements happen the moment an answer is given — replacing the absent teacher in a proven way.</div>
+        <div class="sci-ref">Hattie et al. (2007)</div>
+      </div>
+      <div class="sci-card">
+        <div class="sci-icon">🧠</div>
+        <div class="sci-name">Cognitive Load Theory</div>
+        <div class="sci-desc">Content broken into optimal chunks prevents mental overload and maximises how much each session actually sticks.</div>
+        <div class="sci-ref">Sweller et al. (2019)</div>
+      </div>
+    </div>
+    <div class="partner-banner">
+      <div class="partner-logo">Didask</div>
+      <div class="partner-text">
+        Kalan's learning engine is built on the proprietary pedagogical methodology of <strong>Didask</strong> — a French EdTech company with 10 years of applied R&D in cognitive science, originally created to address educational inequality. Our scientific co-founder brings this methodology back to its original mission: children who have no alternative.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section class="journey-section">
+  <div class="container">
+    <div class="section-label">The Experience</div>
+    <h2 style="color:var(--cream)">What a child's session looks like</h2>
+    <div class="divider"></div>
+    <div class="journey-steps">
+      <div class="journey-step">
+        <div class="j-marker">👋</div>
+        <div>
+          <div class="j-title">Arrival</div>
+          <div class="j-desc">Child taps the screen. Their profile is recognised. The system picks up exactly where they left off — no teacher needed to set up the session.</div>
+        </div>
+      </div>
+      <div class="journey-step">
+        <div class="j-marker">📊</div>
+        <div>
+          <div class="j-title">Assessment</div>
+          <div class="j-desc">A 3-question diagnostic calibrates today's difficulty level in real time. Adapted to every child, every session.</div>
+        </div>
+      </div>
+      <div class="journey-step">
+        <div class="j-marker">🎮</div>
+        <div>
+          <div class="j-title">Active Learning</div>
+          <div class="j-desc">Interactive exercises — reading, maths, science, life skills. Audio-first for low-literacy learners. No passive video watching. Always doing, not watching.</div>
+        </div>
+      </div>
+      <div class="journey-step">
+        <div class="j-marker">💬</div>
+        <div>
+          <div class="j-title">Immediate Feedback</div>
+          <div class="j-desc">Every answer gets a response. Correct answers are celebrated. Mistakes become learning moments with guided explanations — in the child's language.</div>
+        </div>
+      </div>
+      <div class="journey-step">
+        <div class="j-marker">📈</div>
+        <div>
+          <div class="j-title">Progress Tracking</div>
+          <div class="j-desc">Weekly progress synced to a monitoring dashboard. Program managers see aggregated data without needing real-time internet.</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:11px; color:rgba(250,247,240,0.4); text-transform:uppercase; letter-spacing:2px; margin-bottom:12px;">Content available in</div>
+      <div class="lang-tags">
+        <span class="lang-tag">French</span>
+        <span class="lang-tag">English</span>
+        <span class="lang-tag">Dioula / Bambara</span>
+        <span class="lang-tag">Wolof</span>
+        <span class="lang-tag">Hausa</span>
+        <span class="lang-tag">Swahili</span>
+        <span class="lang-tag">+ Local Languages</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPLOYMENT -->
+<section class="deployment-section">
+  <div class="container">
+    <div class="section-label">Deployment Strategy</div>
+    <h2>From pilot to continent</h2>
+    <div class="divider" style="background:rgba(201,168,76,0.4)"></div>
+    <div class="phases">
+      <div class="phase-card">
+        <div class="phase-bg-num">1</div>
+        <div class="phase-period">Months 1–6</div>
+        <div class="phase-title">Proof of Concept</div>
+        <ul class="phase-items">
+          <li>1 school, Abidjan or Lomé</li>
+          <li>10 tablets, 1 Kalan kiosk prototype</li>
+          <li>100 children, ages 6–12</li>
+          <li>Measure retention, engagement, progression</li>
+          <li>Refine content & UX with local teachers</li>
+        </ul>
+      </div>
+      <div class="phase-card">
+        <div class="phase-bg-num">2</div>
+        <div class="phase-period">Months 7–18</div>
+        <div class="phase-title">Regional Pilot</div>
+        <ul class="phase-items">
+          <li>3 countries: Côte d'Ivoire, Sénégal, Togo</li>
+          <li>20 kiosks across 20 communities</li>
+          <li>2,000 children reached</li>
+          <li>First B2G conversations with Ministries</li>
+          <li>Publish impact data for donor reporting</li>
+        </ul>
+      </div>
+      <div class="phase-card">
+        <div class="phase-bg-num">3</div>
+        <div class="phase-period">Year 3–5</div>
+        <div class="phase-title">Scale</div>
+        <ul class="phase-items">
+          <li>10 countries across West & Central Africa</li>
+          <li>500+ kiosks deployed</li>
+          <li>100,000 children per year</li>
+          <li>Government contracts in 3+ countries</li>
+          <li>Full financial self-sustainability</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODEL -->
+<section class="model-section">
+  <div class="container">
+    <div class="section-label">Business Model</div>
+    <h2>Sustainable by design</h2>
+    <div class="divider"></div>
+    <p class="section-intro">Kalan is structured as a hybrid organisation — maximising both fundraising credibility and operational agility across markets.</p>
+    <div class="revenue-grid">
+      <div class="rev-card">
+        <div class="rev-icon">🏛️</div>
+        <div class="rev-title">Foundation & Institutional Grants</div>
+        <div class="rev-desc">Gates Foundation, Aga Khan, AFD, FCDO, EU Education Funds. Grants fund kiosk deployment in the most underserved zones.</div>
+        <span class="rev-tag">Primary — Phase 1 & 2</span>
+      </div>
+      <div class="rev-card">
+        <div class="rev-icon">🤝</div>
+        <div class="rev-title">B2G Government Contracts</div>
+        <div class="rev-desc">Sale or lease of kiosks to African Ministries of Education for public school deployment. Recurring maintenance contracts.</div>
+        <span class="rev-tag">Scale revenue — Phase 2+</span>
+      </div>
+      <div class="rev-card">
+        <div class="rev-icon">💝</div>
+        <div class="rev-title">Kiosk Sponsorship</div>
+        <div class="rev-desc">Companies and diaspora individuals sponsor a kiosk. "1 kiosk = 500 children per year." UK Gift Aid eligible. Strong CSR narrative.</div>
+        <span class="rev-tag">Community & brand</span>
+      </div>
+      <div class="rev-card">
+        <div class="rev-icon">📦</div>
+        <div class="rev-title">Pedagogical Licensing</div>
+        <div class="rev-desc">Other NGOs or EdTech operators license Kalan's content methodology and learning engine for their own programs.</div>
+        <span class="rev-tag">Long-term IP value</span>
+      </div>
+    </div>
+    <div class="structure-note">
+      <div class="str-entity">
+        <div class="str-entity-name">Entity 1 · UK</div>
+        <div class="str-entity-title">Kalan CIO</div>
+        <div class="str-entity-desc">UK Charitable Incorporated Organisation. Handles international fundraising, grant compliance, Gift Aid, and scientific governance. Maximum credibility with Anglo-Saxon funders.</div>
+      </div>
+      <div class="str-divider"></div>
+      <div class="str-entity">
+        <div class="str-entity-name">Entity 2 · West Africa</div>
+        <div class="str-entity-title">Kalan Operations</div>
+        <div class="str-entity-desc">Local SAS or equivalent in Côte d'Ivoire. Handles B2G contracts, local staff, hardware deployment, and community management on the ground.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="roadmap-section">
+  <div class="container">
+    <div class="section-label">12-Month Roadmap</div>
+    <h2>The pilot plan</h2>
+    <div class="divider" style="background:rgba(201,168,76,0.4)"></div>
+    <p style="color:rgba(250,247,240,0.5); font-size:14px; max-width:540px; line-height:1.7; margin-bottom:40px;">
+      Before scaling, we validate the hypothesis with a lean, measurable pilot — designed to generate compelling impact data for Phase 2 fundraising.
+    </p>
+    <div class="pilot-stats">
+      <div class="p-stat">
+        <div class="pnum">1</div>
+        <div class="plabel">Pilot school</div>
+      </div>
+      <div class="p-stat">
+        <div class="pnum">100</div>
+        <div class="plabel">Children enrolled</div>
+      </div>
+      <div class="p-stat">
+        <div class="pnum">6</div>
+        <div class="plabel">Months duration</div>
+      </div>
+      <div class="p-stat">
+        <div class="pnum">£30K</div>
+        <div class="plabel">Pilot budget</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+        <div>
+          <div class="tl-month">Month 1–2</div>
+          <div class="tl-title">Foundation & Setup</div>
+          <div class="tl-desc">Register UK CIO. Formalise co-founder agreement with Didask. Source hardware. Identify pilot school in Abidjan or Lomé.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+        <div>
+          <div class="tl-month">Month 3</div>
+          <div class="tl-title">Content Sprint</div>
+          <div class="tl-desc">Adapt Didask methodology for ages 6–12. Build first 4 modules (reading, maths, science, life skills) in French + Dioula. Test with 10 children.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+        <div>
+          <div class="tl-month">Month 4–6</div>
+          <div class="tl-title">Live Pilot</div>
+          <div class="tl-desc">100 children using the kiosk. Weekly data collection. Teacher feedback. Content iteration. Impact stories documented for reporting.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+        <div>
+          <div class="tl-month">Month 7–12</div>
+          <div class="tl-title">Fundraising Round</div>
+          <div class="tl-desc">Publish pilot results. Launch £300K fundraising for Phase 2. Apply to Gates Grand Challenges, Jacobs Foundation, AFD, FCDO.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team-section">
+  <div class="container">
+    <div class="section-label">The Team</div>
+    <h2>Built by people who've done it before</h2>
+    <div class="divider" style="background:rgba(201,168,76,0.4)"></div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">👩</div>
+        <div class="team-name">Kim Tran</div>
+        <div class="team-role">Co-Founder & CEO</div>
+        <div class="team-bio">
+          Co-founder of Trenderz — a creator-powered booking platform operating across West Africa (Côte d'Ivoire, Sénégal, Togo, Nigeria, Morocco). Raised in France, based in Abidjan. Deep expertise in African market operations, impact fundraising, and building cross-border teams from scratch.
+        </div>
+        <div class="team-tags">
+          <span class="team-tag">West Africa Networks</span>
+          <span class="team-tag">Startup Building</span>
+          <span class="team-tag">Impact Fundraising</span>
+          <span class="team-tag">Francophone Africa</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">👨</div>
+        <div class="team-name">Son Ly</div>
+        <div class="team-role">Chief Scientific Officer</div>
+        <div class="team-bio">
+          Founder of Didask — France's leading neuroscience-based learning platform. Originally built to address educational inequality, before pivoting to enterprise. Brings 10 years of proprietary R&D, a validated cognitive science methodology, and scientific credibility no other EdTech NGO in Africa can match.
+        </div>
+        <div class="team-tags">
+          <span class="team-tag">Cognitive Science</span>
+          <span class="team-tag">EdTech Product</span>
+          <span class="team-tag">10 yrs R&D</span>
+          <span class="team-tag">AI Pedagogy</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ASK -->
+<section class="ask-section">
+  <div class="container">
+    <div class="section-label">What We're Looking For</div>
+    <h2>Join us at the beginning</h2>
+    <div class="divider" style="background:rgba(201,168,76,0.4)"></div>
+    <div class="featured-ask">
+      <div class="ask-amount">£300K</div>
+      <div>
+        <div class="ask-title">Phase 1 + 2 Fundraising Target</div>
+        <div class="ask-desc">£30K for pilot (6 months, 1 school, 100 children). £270K for Phase 2 regional rollout across 3 countries, 20 kiosks, 2,000 children. Targeting foundations, impact investors and government education programs.</div>
+      </div>
+    </div>
+    <div class="ask-grid">
+      <div class="ask-card">
+        <div class="ask-type">For Foundations & Donors</div>
+        <div class="ask-title" style="color:var(--cream); font-size:16px; font-weight:600; margin-bottom:8px;">Grant Partnership</div>
+        <div class="ask-desc">Structured as a UK CIO for full grant compliance and tax-efficient giving. Your grant directly funds kiosk deployment and rigorous impact measurement, published publicly.</div>
+      </div>
+      <div class="ask-card">
+        <div class="ask-type">For Governments</div>
+        <div class="ask-title" style="color:var(--cream); font-size:16px; font-weight:600; margin-bottom:8px;">Pilot Partnership</div>
+        <div class="ask-desc">We seek 1 Ministry of Education partner for our first institutional pilot. We provide kiosks, content, training and impact reporting. You provide a school and local coordination.</div>
+      </div>
+      <div class="ask-card">
+        <div class="ask-type">For Companies & CSR</div>
+        <div class="ask-title" style="color:var(--cream); font-size:16px; font-weight:600; margin-bottom:8px;">Kiosk Sponsorship</div>
+        <div class="ask-desc">1 kiosk = £5,000 = 500 children educated per year. Named sponsorship, impact reports, site visits available. UK Gift Aid eligible.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISION -->
+<section class="vision-section">
+  <div class="container">
+    <div style="font-size:10px; letter-spacing:4px; color:var(--gold); text-transform:uppercase; margin-bottom:24px;">Our Vision</div>
+    <div class="vision-quote">
+      Every child deserves to learn<br>
+      the way their brain<br>
+      <em>actually works.</em>
+    </div>
+    <div class="vision-stats">
+      <div class="vis-stat">
+        <div class="big">500+</div>
+        <div class="small">Kiosks by 2030</div>
+      </div>
+      <div class="vis-stat">
+        <div class="big">10</div>
+        <div class="small">Countries</div>
+      </div>
+      <div class="vis-stat">
+        <div class="big">500K</div>
+        <div class="small">Children per year</div>
+      </div>
+    </div>
+    <a href="mailto:hello@kalan.org" class="vision-cta">hello@kalan.org</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="logo">Kalan</div>
+    <div class="footer-links">
+      <a href="mailto:hello@kalan.org">hello@kalan.org</a>
+      <a href="#">kalan.org</a>
+    </div>
+    <div class="footer-copy">© 2026 Kalan CIO · UK Registered Charity</div>
+  </div>
+</footer>
+
+</body>
+</html>
